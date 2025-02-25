@@ -1,0 +1,33 @@
+{% from "macros/fields.html" import render_text , render_area %}
+
+{%extends "layout.html"%}
+
+{%block head_content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}" />
+
+{% endblock %}
+
+
+{% block main_content %}
+  <form name = "add_movie" method = "post" nonvalidate class="form">
+    <div class = "form__container">
+      {{form.hidden_tag()}}
+      {{render_text(form.title)}}
+      {{render_text(form.director)}}
+      {{render_text(form.year)}}
+
+      {{render_area(form.cast)}}
+      {{render_area(form.series)}}
+      {{render_area(form.tags)}}
+      {{render_area(form.description)}}
+      {{render_text(form.video_link)}}
+
+
+
+      </div>
+      <div>
+        {{form.submit(class_ = "button button--form")}}
+      </div>
+  </form>
+
+{% endblock %}
